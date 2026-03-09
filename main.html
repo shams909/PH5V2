@@ -89,3 +89,47 @@
         </span>
       </div>
     </div>
+
+<!-- loading spinner -->
+    <div id="loadingSpinner" class="flex flex-col items-center justify-center gap-3.5 py-20 text-zinc-500 text-sm">
+      <div class="w-10 h-10 border-[3px] border-zinc-700 border-t-purple-600 rounded-full animate-spin"></div>
+      <p>Loading issues...</p>
+    </div>
+
+
+    <!-- empty state -->
+    <div id="emptyState" class="hidden text-center py-20 text-zinc-500 text-sm">
+      <p id="emptyStateText">No issues found.</p>
+    </div>
+
+    <!-- issues grids -->
+    <div id="issuesGrid" class="hidden grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4"></div>
+
+  </main>
+
+  
+  <!-- js modeal -->
+  <div id="issueModal" class="fixed inset-0 bg-black/75 z-[100] flex items-center justify-center p-5 hidden"
+    onclick="closeModalOutside(event)">
+    <div
+      class="bg-zinc-900 border border-zinc-800 rounded-xl w-full max-w-[580px] max-h-[90vh] overflow-y-auto relative">
+
+      <!-- close buttonx  -->
+      <button onclick="closeModal()"
+        class="absolute top-3.5 right-3.5 w-8 h-8 bg-zinc-800 border border-zinc-700 rounded-md text-zinc-400 hover:text-white hover:bg-zinc-700 flex items-center justify-center text-sm transition-colors z-10">✕</button>
+
+      <!-- spinner -->
+      <div id="modalLoadingSpinner" class="hidden flex justify-center p-12">
+        <div class="w-8 h-8 border-[3px] border-zinc-700 border-t-purple-600 rounded-full animate-spin"></div>
+      </div>
+
+      <!-- content of modal filtered by js -->
+      <div id="modalContent" class="p-7"></div>
+
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+
+</html>
