@@ -24,3 +24,22 @@
                 <h1 class="text-xl font-bold text-white mb-1">GitHub Issues Tracker</h1>
                 <p class="text-sm text-zinc-400">Sign in to manage your issues</p>
             </div>
+
+            <!-- Form -->
+            <form id="loginForm" class="flex flex-col gap-4" novalidate>
+
+                <div class="flex flex-col gap-1.5">
+                    <label for="username" class="text-sm font-medium text-zinc-300">Username</label>
+                    <input type="text" id="username"
+                        class="bg-zinc-800 border border-zinc-700 rounded-md text-white text-sm px-3 py-2.5 outline-none focus:border-purple-500"
+                        placeholder="Enter Username" />
+                    <span class="text-xs text-purple-400">Default: <strong>admin</strong></span>
+                </div>
+
+                <div class="flex flex-col gap-1.5">
+                    <label for="password" class="text-sm font-medium text-zinc-300">Password</label>
+                    <input type="password" id="password"
+                        class="bg-zinc-800 border border-zinc-700 rounded-md text-white text-sm px-3 py-2.5 outline-none focus:border-purple-500"
+                        placeholder="Enter Password" />
+                    <span class="text-xs text-purple-400">Default: <strong>admin123</strong></span>
+                </div>
