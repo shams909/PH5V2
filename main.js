@@ -92,17 +92,17 @@ function renderIssues(issues) {
 
     // Build a card for each issue
     issues.forEach(function (issue, index) {
-        var card = buildCard(issue);
+        const card = buildCard(issue);
         issuesGrid.appendChild(card);
     });
 }
 
 // builds a single issue card element
 function buildCard(issue) {
-    var isOpen = issue.status === 'open';
+    const isOpen = issue.status === 'open';
 
     // Create the card div
-    var card = document.createElement('div');
+    const card = document.createElement('div');
     card.className = 'bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden flex flex-col cursor-pointer hover:bg-zinc-800 transition-colors duration-200';
 
     // when clicked → open the modal
@@ -111,26 +111,26 @@ function buildCard(issue) {
     });
 
     // top coloured stripe (green = open, purple = closed)
-    var topBar = document.createElement('div');
+    const topBar = document.createElement('div');
     topBar.className = 'w-full';
     topBar.style.height = '3px';
     topBar.style.backgroundColor = isOpen ? '#10b981' : '#7c3aed';
 
     // inner content area
-    var inner = document.createElement('div');
+    const inner = document.createElement('div');
     inner.className = 'p-3.5 flex flex-col gap-2.5 flex-1';
 
     // status icon + priority badge
-    var topRow = document.createElement('div');
+    const topRow = document.createElement('div');
     topRow.className = 'flex items-center justify-between';
 
-    var statusIcon = document.createElement('img');
+    const statusIcon = document.createElement('img');
     statusIcon.className = 'w-5 h-5 object-contain';
     statusIcon.src = isOpen ? 'assets/Open-Status.png' : 'assets/Closed- Status .png';
     statusIcon.alt = issue.status;
 
-    var priority = (issue.priority || 'low').toLowerCase();
-    var priorityBadge = document.createElement('span');
+    const priority = (issue.priority || 'low').toLowerCase();
+    const priorityBadge = document.createElement('span');
     priorityBadge.className = 'text-[10px] font-bold px-2 py-0.5 rounded-full uppercase ' + getPriorityClass(priority);
     priorityBadge.textContent = priority.toUpperCase();
 
@@ -138,21 +138,21 @@ function buildCard(issue) {
     topRow.appendChild(priorityBadge);
 
     // title
-    var title = document.createElement('h3');
+    const title = document.createElement('h3');
     title.className = 'text-[13px] font-bold text-white leading-snug line-clamp-2';
     title.textContent = issue.title;
 
     // description
-    var desc = document.createElement('p');
+    const desc = document.createElement('p');
     desc.className = 'text-xs text-zinc-500 leading-snug line-clamp-2';
     desc.textContent = issue.description;
 
     // label pills
-    var labelsRow = document.createElement('div');
+    const labelsRow = document.createElement('div');
     labelsRow.className = 'flex flex-wrap gap-1';
     if (issue.labels && issue.labels.length > 0) {
         issue.labels.forEach(function (label) {
-            var pill = document.createElement('span');
+            const pill = document.createElement('span');
             pill.className = 'text-[10px] font-semibold px-2 py-0.5 rounded-full uppercase ' + getLabelClass(label);
             pill.textContent = label.toUpperCase();
             labelsRow.appendChild(pill);
@@ -160,18 +160,18 @@ function buildCard(issue) {
     }
 
     // thin divider line
-    var divider = document.createElement('div');
+    const divider = document.createElement('div');
     divider.className = 'h-px bg-zinc-800';
 
     // footer with issue number, author and date
-    var footer = document.createElement('div');
+    const footer = document.createElement('div');
     footer.className = 'flex justify-between items-end gap-1 flex-wrap';
 
-    var authorDiv = document.createElement('div');
+    const authorDiv = document.createElement('div');
     authorDiv.className = 'text-[11px] text-zinc-500';
     authorDiv.innerHTML = '#' + issue.id + ' by <span class="text-zinc-600">' + (issue.author || 'unknown') + '</span>';
 
-    var dateDiv = document.createElement('div');
+    const dateDiv = document.createElement('div');
     dateDiv.className = 'text-[11px] text-zinc-600';
     dateDiv.textContent = formatDate(issue.createdAt);
 
@@ -217,11 +217,11 @@ function openModal(id) {
 
 // renders the modal content for a single issue
 function renderModal(issue) {
-    var isOpen = issue.status === 'open';
-    var topBarColor = isOpen ? '#10b981' : '#7c3aed';
+    const isOpen = issue.status === 'open';
+    const topBarColor = isOpen ? '#10b981' : '#7c3aed';
 
     // build labels html
-    var labelsHtml = '';
+    let labelsHtml = '';
     if (issue.labels && issue.labels.length > 0) {
         issue.labels.forEach(function (l) {
             labelsHtml += '<span class="text-[10px] font-semibold px-2 py-0.5 rounded-full uppercase ' + getLabelClass(l) + '">' + l.toUpperCase() + '</span>';
@@ -229,18 +229,18 @@ function renderModal(issue) {
     }
 
     // status tag colours
-    var statusClass = isOpen
+    const statusClass = isOpen
         ? 'bg-emerald-950 text-emerald-400 border border-emerald-900'
         : 'bg-purple-950 text-purple-400 border border-purple-900';
 
-    var priorityClass = getPriorityClass((issue.priority || 'low').toLowerCase());
+    const priorityClass = getPriorityClass((issue.priority || 'low').toLowerCase());
 
-    var assigneeHtml = issue.assignee
+    const assigneeHtml = issue.assignee
         ? issue.assignee
         : '<span class="text-zinc-500">Unassigned</span>';
 
     // build the HTML string
-    var html = '';
+    let html = '';
 
     // top stripe
     html += '<div style="height:5px;background:' + topBarColor + ';border-radius:12px 12px 0 0;margin:-28px -28px 20px;"></div>';
@@ -356,7 +356,7 @@ function showEmpty(msg) {
 
 function formatDate(isoString) {
     if (!isoString) return '—';
-    var d = new Date(isoString);
+    const d = new Date(isoString);
     return (d.getMonth() + 1) + '/' + d.getDate() + '/' + d.getFullYear();
 }
 
@@ -367,7 +367,7 @@ function getPriorityClass(priority) {
 }
 
 function getLabelClass(label) {
-    var l = label.toLowerCase();
+    const l = label.toLowerCase();
     if (l.includes('bug')) return 'bg-red-950 text-red-400 border border-red-900';
     if (l.includes('enhancement')) return 'bg-emerald-950 text-emerald-400 border border-emerald-900';
     if (l.includes('help')) return 'bg-amber-950 text-amber-400 border border-amber-900';
