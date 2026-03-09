@@ -47,3 +47,45 @@
 
     </div>
   </nav>
+
+
+   <!-- main -->
+  <main class="max-w-6xl mx-auto px-6 py-7 pb-16">
+
+    <!-- tab buttons -->
+    <div class="mb-5">
+      <div class="inline-flex border border-zinc-700 rounded-md overflow-hidden bg-zinc-900">
+        <button
+          class="tab-btn px-5 py-2 text-sm font-semibold text-white bg-purple-600 border-r border-zinc-700 transition-colors"
+          id="tabAll" data-filter="all" onclick="switchTab('all')">All</button>
+        <button
+          class="tab-btn px-5 py-2 text-sm font-medium text-zinc-400 hover:bg-zinc-800 hover:text-zinc-200 border-r border-zinc-700 transition-colors"
+          id="tabOpen" data-filter="open" onclick="switchTab('open')">Open</button>
+        <button
+          class="tab-btn px-5 py-2 text-sm font-medium text-zinc-400 hover:bg-zinc-800 hover:text-zinc-200 transition-colors"
+          id="tabClosed" data-filter="closed" onclick="switchTab('closed')">Closed</button>
+      </div>
+    </div>
+
+
+    <!-- issue counter box -->
+
+    <!-- Issues Count Box -->
+    <div
+      class="flex items-center justify-between bg-zinc-900 border border-zinc-800 rounded-xl px-5 py-4 mb-5 flex-wrap gap-3">
+      <div class="flex items-center gap-3.5">
+        <img src="assets/Aperture.png" alt="Issues" class="w-10 h-10 object-contain" />
+        <div>
+          <h2 id="issueCountHeading" class="text-xl font-bold text-white">-- Issues</h2>
+          <p class="text-xs text-zinc-500 mt-0.5">Track and manage your project issues</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-4">
+        <span class="flex items-center gap-1.5 text-sm font-medium text-emerald-400">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span> Open
+        </span>
+        <span class="flex items-center gap-1.5 text-sm font-medium text-purple-400">
+          <span class="w-2 h-2 rounded-full bg-purple-600 inline-block"></span> Closed
+        </span>
+      </div>
+    </div>
